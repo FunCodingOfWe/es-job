@@ -1,4 +1,3 @@
-
 zookeeper:
   address: 192.168.247.7:2181
   namespace: elastic-job
@@ -6,46 +5,44 @@ zookeeper:
   sessionTimeout: 10000
   maxRetries: 3
 
-# simplejobÅäÖÃ
+# simplejobé…ç½®
 simpleJob:
-    cron: 0/5 * * * * ?
-    shardingTotalCount: 5
-    shardingItemParameters: 0=java,1=php,2=erlang,3=angular,4=vue
-    jobParameter: source1=public,source2=private
-    failover: true
-    monitorExecution: true
-    monitorPort: 8889
-    maxTimeDiffSeconds: -1
-    jobShardingStrategyClass: com.dangdang.ddframe.job.lite.api.strategy.impl.AverageAllocationJobShardingStrategy
+  cron: 0/5 * * * * ?
+  shardingTotalCount: 5
+  shardingItemParameters: 0=java,1=php,2=erlang,3=angular,4=vue
+  jobParameter: source1=public,source2=private
+  failover: true
+  monitorExecution: true
+  monitorPort: 8889
+  maxTimeDiffSeconds: -1
+  jobShardingStrategyClass: com.dangdang.ddframe.job.lite.api.strategy.impl.AverageAllocationJobShardingStrategy
 
 dataflowJob:
-    cron: 0/10 * * * * ?
-    shardingTotalCount: 2
-    shardingItemParameters: 0=jinan,1=qingdao
+  cron: 0/10 * * * * ?
+  shardingTotalCount: 2
+  shardingItemParameters: 0=jinan,1=qingdao
 
 
 
 
 ############################################################
 #
-# ÅäÖÃÊı¾İÔ´ĞÅÏ¢
+# é…ç½®æ•°æ®æºä¿¡æ¯
 #
 ############################################################
 spring:
-  datasource: # Êı¾İÔ´µÄÏà¹ØÅäÖÃ
-      type: com.zaxxer.hikari.HikariDataSource          # Êı¾İÔ´ÀàĞÍ£ºHikariCP
-      driver-class-name: com.mysql.jdbc.Driver          # mysqlÇı¶¯
-      url: jdbc:mysql://localhost:3306/elasticjob?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
-      username: root
-      password: root
-      hikari:
-        connection-timeout: 30000       # µÈ´ıÁ¬½Ó³Ø·ÖÅäÁ¬½ÓµÄ×î´óÊ±³¤£¨ºÁÃë£©£¬³¬¹ıÕâ¸öÊ±³¤»¹Ã»¿ÉÓÃµÄÁ¬½ÓÔò·¢ÉúSQLException£¬ Ä¬ÈÏ:30Ãë
-        minimum-idle: 5                 # ×îĞ¡Á¬½ÓÊı
-        maximum-pool-size: 20           # ×î´óÁ¬½ÓÊı
-        auto-commit: true               # ×Ô¶¯Ìá½»
-        idle-timeout: 600000            # Á¬½Ó³¬Ê±µÄ×î´óÊ±³¤£¨ºÁÃë£©£¬³¬Ê±Ôò±»ÊÍ·Å£¨retired£©£¬Ä¬ÈÏ:10·ÖÖÓ
-        pool-name: DateSourceHikariCP     # Á¬½Ó³ØÃû×Ö
-        max-lifetime: 1800000           # Á¬½ÓµÄÉúÃüÊ±³¤£¨ºÁÃë£©£¬³¬Ê±¶øÇÒÃ»±»Ê¹ÓÃÔò±»ÊÍ·Å£¨retired£©£¬Ä¬ÈÏ:30·ÖÖÓ 1800000ms
-        connection-test-query: SELECT 1
-
-
+  datasource: # æ•°æ®æºçš„ç›¸å…³é…ç½®
+    type: com.zaxxer.hikari.HikariDataSource          # æ•°æ®æºç±»å‹ï¼šHikariCP
+    driver-class-name: com.mysql.jdbc.Driver          # mysqlé©±åŠ¨
+    url: jdbc:mysql://localhost:3306/elasticjob?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 30000       # ç­‰å¾…è¿æ¥æ± åˆ†é…è¿æ¥çš„æœ€å¤§æ—¶é•¿ï¼ˆæ¯«ç§’ï¼‰ï¼Œè¶…è¿‡è¿™ä¸ªæ—¶é•¿è¿˜æ²¡å¯ç”¨çš„è¿æ¥åˆ™å‘ç”ŸSQLExceptionï¼Œ é»˜è®¤:30ç§’
+      minimum-idle: 5                 # æœ€å°è¿æ¥æ•°
+      maximum-pool-size: 20           # æœ€å¤§è¿æ¥æ•°
+      auto-commit: true               # è‡ªåŠ¨æäº¤
+      idle-timeout: 600000            # è¿æ¥è¶…æ—¶çš„æœ€å¤§æ—¶é•¿ï¼ˆæ¯«ç§’ï¼‰ï¼Œè¶…æ—¶åˆ™è¢«é‡Šæ”¾ï¼ˆretiredï¼‰ï¼Œé»˜è®¤:10åˆ†é’Ÿ
+      pool-name: DateSourceHikariCP     # è¿æ¥æ± åå­—
+      max-lifetime: 1800000           # è¿æ¥çš„ç”Ÿå‘½æ—¶é•¿ï¼ˆæ¯«ç§’ï¼‰ï¼Œè¶…æ—¶è€Œä¸”æ²¡è¢«ä½¿ç”¨åˆ™è¢«é‡Šæ”¾ï¼ˆretiredï¼‰ï¼Œé»˜è®¤:30åˆ†é’Ÿ 1800000ms
+      connection-test-query: SELECT 1
