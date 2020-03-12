@@ -1,28 +1,8 @@
-zookeeper:
-  address: 192.168.247.7:2181
-  namespace: elastic-job
-  connectionTimeout: 10000
-  sessionTimeout: 10000
-  maxRetries: 3
-
-# simplejob配置
-simpleJob:
-  cron: 0/5 * * * * ?
-  shardingTotalCount: 5
-  shardingItemParameters: 0=java,1=php,2=erlang,3=angular,4=vue
-  jobParameter: source1=public,source2=private
-  failover: true
-  monitorExecution: true
-  monitorPort: 8889
-  maxTimeDiffSeconds: -1
-  jobShardingStrategyClass: com.dangdang.ddframe.job.lite.api.strategy.impl.AverageAllocationJobShardingStrategy
-
-dataflowJob:
-  cron: 0/10 * * * * ?
-  shardingTotalCount: 2
-  shardingItemParameters: 0=jinan,1=qingdao
-
-
+elastic:
+  job:
+    zk:
+      namespace: elastic-job
+      serverLists: 127.0.0.1:2181
 
 
 ############################################################
@@ -36,7 +16,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver          # mysql驱动
     url: jdbc:mysql://localhost:3306/elasticjob?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
     username: root
-    password: root
+    password: 12345678
     hikari:
       connection-timeout: 30000       # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 默认:30秒
       minimum-idle: 5                 # 最小连接数

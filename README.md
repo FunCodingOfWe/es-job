@@ -1,2 +1,2 @@
 # es-job
-springboot整合es-job.可独立部署
+springboot整合 elasticjob-spring-boot-starter demo
